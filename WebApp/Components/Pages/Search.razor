@@ -1,0 +1,102 @@
+﻿@page "/search"
+@rendermode InteractiveServer
+
+@using Blazorise
+@using System.Net.Http.Json
+@using System.Linq
+@inject IHttpClientFactory ClientFactory
+@inject NavigationManager Nav
+
+<PageTitle>Suche</PageTitle>
+
+<Alert Color="Color.Danger"
+       Visible="@showError"
+       Closable
+       Dismissed="() => showError = false">
+    @errorMessage
+</Alert>
+
+<Addons>
+    <Addon>
+        <Autocomplete TItem="MovieSuggestion"
+                      TValue="int"
+                      Data="@Suggestions"
+                      TextField="@(m => m.Title)"
+                      ValueField="@(m => m.Id)"
+                      SelectedValue="@selectedMovieId"
+                      SelectedValueChanged="OnSelectedValueChanged"
+                      SelectedText="@selectedMovieTitle"
+                      SelectedTextChanged="OnSelectedTextChanged"
+                      Placeholder="Filmtitel suchen…"
+                      MinLength="1"
+                      Filter="AutocompleteFilter.Contains"
+                      CustomFilter="@( (item, search) => true )"
+                      FreeTyping="true"
+                      ReadData="OnReadData">
+            <NotFoundContent>Keine Treffer für '@context'.</NotFoundContent>
+        </Autocomplete>
+    </Addon>
+    <Addon AddonType="AddonType.End">
+        <Button Color="Color.Primary" Clicked="OnSearchClicked" Title="Suche starten">
+            <Icon Name="IconName.Search" />
+        </Button>
+    </Addon>
+</Addons>
+
+@code {
+    private IEnumerable<MovieSuggestion> Suggestions { get; set; } = Enumerable.Empty<MovieSuggestion>();
+    private int selectedMovieId { get; set; }
+    private string? selectedMovieTitle { get; set; }
+    private bool showError;
+    private string? errorMessage;
+
+    private CancellationTokenSource? _cts;
+
+    public class MovieSuggestion { public int Id { get; set; } public string Title { get; set; } = string.Empty; }
+    private class MovieIdDto { public int Id { get; set; } }
+
+    private async Task OnReadData(AutocompleteReadDataEventArgs e)
+    {
+        if (string.IsNullOrWhiteSpace(e.SearchValue)) { Suggestions = Enumerable.Empty<MovieSuggestion>(); return; }
+
+        _cts?.Cancel(); _cts = new CancellationTokenSource();
+        try
+        {
+            var http = ClientFactory.CreateClient("MoviesApi");
+            var url  = new Uri(http.BaseAddress!, $"movie-archive/autocomplete/{Uri.EscapeDataString(e.SearchValue)}");
+            Suggestions = await http.GetFromJsonAsync<List<MovieSuggestion>>(url, _cts.Token) ?? Enumerable.Empty<MovieSuggestion>();
+        }
+        catch { Suggestions = Enumerable.Empty<MovieSuggestion>(); }
+    }
+
+    private Task OnSelectedValueChanged(int value)
+    {
+        selectedMovieId = value;
+        if (value > 0) Nav.NavigateTo($"/movies/detail/{value}");
+        return Task.CompletedTask;
+    }
+
+    private Task OnSelectedTextChanged(string value)
+    {
+        selectedMovieTitle = value;
+        return Task.CompletedTask;
+    }
+
+    private async Task OnSearchClicked()
+    {
+        if (selectedMovieId > 0) { Nav.NavigateTo($"/movies/detail/{selectedMovieId}"); return; }
+
+        if (!string.IsNullOrWhiteSpace(selectedMovieTitle))
+        {
+            try
+            {
+                var http = ClientFactory.CreateClient("MoviesApi");
+                var url  = new Uri(http.BaseAddress!, $"movie-archive/movie/by-title/{Uri.EscapeDataString(selectedMovieTitle)}");
+                var dto  = await http.GetFromJsonAsync<MovieIdDto>(url);
+                if (dto?.Id > 0) Nav.NavigateTo($"/movies/detail/{dto.Id}");
+                else { showError = true; errorMessage = "Film nicht gefunden."; }
+            }
+            catch { showError = true; errorMessage = "Film konnte nicht geladen werden."; }
+        }
+    }
+}

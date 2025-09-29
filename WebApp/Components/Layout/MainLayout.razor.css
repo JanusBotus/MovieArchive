@@ -1,0 +1,80 @@
+.navbar-shell {
+    position: relative;
+    z-index: 5;
+    background-color: #fff;
+    border: none;
+    border-bottom: 2px solid #000;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+.main-navbar {
+    background-color: transparent;
+    padding: 0.5rem 1rem;
+    overflow: visible;
+}
+
+.navbar-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr; 
+    align-items: center;
+    gap: 1rem;
+    white-space: nowrap;
+}
+
+.brand-link {
+    text-decoration: none;
+    color: #000;
+}
+.brand-link:visited,
+.brand-link:active,
+.brand-link:hover {
+    color: #000;
+}
+.brand-title {
+    margin: 0;
+    line-height: 1.1;
+}
+
+
+.center-group {
+    justify-self: center;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+
+.vertical-separator {
+    width: 1px;
+    height: 1.75rem;
+    background-color: #000;
+    opacity: 0.65;
+}
+
+.btn-solid {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.48rem 0.95rem;
+    border: 1px solid #bbb;
+    border-radius: 0.375rem;
+    background: #e9ecef;     
+    color: #111;
+    text-decoration: none;
+    line-height: 1;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .15s ease, transform .02s ease-out;
+}
+.btn-solid:hover { background: #dde2e6; }
+.btn-solid:active { transform: translateY(1px); }
+.btn-solid:focus { outline: 2px solid rgba(0,0,0,.25); outline-offset: 2px; }
+
+::deep(.dropdown-menu),
+::deep(.autocomplete-menu),
+::deep(.b-autocomplete .dropdown-menu),
+::deep(.b-dropdown .dropdown-menu) {
+    z-index: 2000;
+}
+::deep(.dropdown-menu.show) { z-index: 2000; }

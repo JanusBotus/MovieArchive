@@ -1,0 +1,228 @@
+﻿@page "/movies/create"
+@inject IHttpClientFactory HttpFactory
+
+@using System.Net.Http.Json
+@using System.Text.Json
+@using System.Text.Json.Serialization
+@using Blazorise
+@using Contracts.Enums
+@using Contracts.Dtos.Create
+@using Contracts.Dtos.Read
+@using Microsoft.AspNetCore.Components.Forms
+@using Microsoft.AspNetCore.Mvc.ModelBinding
+@rendermode InteractiveServer
+
+<PageTitle>Film anlegen</PageTitle>
+
+<h3>Neuen Film anlegen (Stammdaten)</h3>
+
+<EditForm Model="@model" OnValidSubmit="OnAddMovie">
+    <Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator />
+    <Microsoft.AspNetCore.Components.Forms.ValidationSummary />
+
+    <Field>
+        <Label>Titel</Label>
+        <TextEdit @bind-Text="model.Title" Placeholder="z. B. Inception" />
+    </Field>
+
+    <Field>
+        <Label>Bewertung (0–10)</Label>
+        <NumericEdit TValue="double" @bind-Value="model.Rating" Min="0" Max="10" Step="0.1m" />
+    </Field>
+
+    <Field>
+        <Label>Erscheinungsdatum</Label>
+        <DateEdit TValue="DateOnly ?" @bind-Date="model.ReleaseDate" />
+    </Field>
+
+    <Field>
+        <Label>Altersfreigabe</Label>
+        <Select TValue="AgeRating ?" @bind-SelectedValue="model.AgeRating">
+            <SelectItem Value="@((AgeRating?)null)">Bitte wählen…</SelectItem>
+            <SelectItem Value="@(AgeRating.USK0)">USK 0</SelectItem>
+            <SelectItem Value="@(AgeRating.USK6)">USK 6</SelectItem>
+            <SelectItem Value="@(AgeRating.USK12)">USK 12</SelectItem>
+            <SelectItem Value="@(AgeRating.USK16)">USK 16</SelectItem>
+            <SelectItem Value="@(AgeRating.USK18)">USK 18</SelectItem>
+        </Select>
+    </Field>
+
+    <Field>
+        <Label>Handlung</Label>
+        <MemoEdit @bind-Text="model.Plot" Rows="6" Placeholder="Kurz die Handlung beschreiben…" />
+    </Field>
+
+    <Field>
+        <Label>Laufzeit (Min.)</Label>
+        <NumericEdit TValue="int" @bind-Value="model.Runtime" Min="0" />
+    </Field>
+
+    <Field>
+        <Label>Budget (€)</Label>
+        <NumericEdit TValue="decimal" @bind-Value="model.Budget" Min="0m" />
+    </Field>
+
+    <Divider />
+
+    <Field>
+        <Label>Genres</Label>
+
+        @for (var i = 0; i < model.Genres.Count; i++)
+        {
+            var index = i;
+            var genre = model.Genres[i];
+
+            <div @key="genre">
+                <Addon>
+                    <TextEdit class="me-2" @bind-Text="genre.Name" Placeholder="z. B. Sci-Fi" />
+                    <Button class="mt-3" Color="Color.Danger" Disabled="@(model.Genres.Count == 1)"
+                        Clicked="() => model.Genres.RemoveAt(index)">
+                        Entfernen
+                    </Button>
+                </Addon>
+
+                <ValidationMessage For="@(() => genre.Name)" />
+            </div>
+        }
+
+        <div class="mt-2">
+            <Button Color="Color.Secondary" Clicked="() => model.Genres.Add(new GenreCreateDto())"> Weiteres Genre
+                hinzufügen </Button>
+        </div>
+    </Field>
+
+    <Divider />
+
+    <Field>
+        <Label>Beteiligte</Label>
+
+        @for (var i = 0; i < model.Involvements.Count; i++)
+        {
+            var index = i;
+            var person = model.Involvements[i];
+
+            <div class="mb-3" @key="person">
+                <Addon>
+                    <TextEdit class="me-2" @bind-Text="person.FirstName" Placeholder="Vorname" />
+                    <TextEdit class="me-2" @bind-Text="person.LastName" Placeholder="Nachname" />
+
+                    <Select TValue="MovieRole"
+                    Multiple
+                    SelectedValues="@((IReadOnlyList<MovieRole>)person.Roles)"
+                    SelectedValuesChanged="@(vals => person.Roles = vals?.ToList() ?? new())"
+                    SelectedValuesExpression="@( () => person.Roles )"
+                    class="me-2">
+                    @foreach (var r in roles)
+                    {
+                        <SelectItem Value="@r">@RoleLabels[r]</SelectItem>
+                    }
+                    </Select>
+
+                    <Button class="mt-3" Color="Color.Danger" Disabled="@(model.Involvements.Count == 1)" Clicked="() => model.Involvements.RemoveAt(index)">
+                        Entfernen
+                    </Button>
+                </Addon>
+
+                <!-- Validierungen der Person -->
+                <div class="mt-1">
+                    <ValidationMessage For="@(() => person.FirstName)" />
+                    <ValidationMessage For="@(() => person.LastName)" />
+                    <ValidationMessage For="@(() => person.Roles)" />
+                </div>
+                <br />
+            </div>
+        }
+
+        <div class="mt-2">
+            <Button Color="Color.Secondary" Clicked="@AddPerson">
+                Weitere Person hinzufügen
+            </Button>
+        </div>
+    </Field>
+
+    <Divider />
+    <br />
+
+    <Field>
+        <Button Color="Color.Primary" Type="ButtonType.Submit">Film hinzufügen</Button>
+    </Field>
+
+</EditForm>
+
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+    <Alert Color="Color.Danger" Visible Dismissable>@errorMessage</Alert>
+}
+@if (!string.IsNullOrEmpty(successMessage))
+{
+    <Alert Color="Color.Success" Visible Dismissable>@successMessage</Alert>
+}
+
+@code {
+    private MovieCreateDto model = new MovieCreateDto();
+    private string? errorMessage;
+    private string? successMessage;
+
+     private static readonly JsonSerializerOptions JsonOpts = new(JsonSerializerDefaults.Web)
+    {
+        Converters = { new JsonStringEnumConverter() }
+    };
+
+    private static readonly Dictionary<MovieRole, string> RoleLabels = new()
+    {
+        [MovieRole.LEADACTOR] = "Hauptdarsteller:in",
+        [MovieRole.DIRECTOR]  = "Regie",
+        [MovieRole.WRITER]    = "Drehbuch"
+    };
+    private readonly List<MovieRole> roles = Enum.GetValues<MovieRole>().ToList();
+
+    protected override void OnInitialized()
+    {
+        if (model.Genres.Count == 0)
+            model.Genres.Add(new GenreCreateDto());
+
+        if (model.Involvements.Count == 0)
+            model.Involvements.Add(new PersonCreateDto());
+    }
+
+    private void AddPerson() => model.Involvements.Add(new PersonCreateDto());
+
+    private async Task OnAddMovie()
+    {
+        errorMessage = successMessage = null;
+
+        try
+        {
+            var http = HttpFactory.CreateClient("MoviesApi");
+            var resp = await http.PostAsJsonAsync("movie-archive/movies", model, JsonOpts);
+
+            if (resp.IsSuccessStatusCode)
+            {
+                var created = await resp.Content.ReadFromJsonAsync<MovieReadDto>(JsonOpts);
+                successMessage = $"Film '{created?.Title}' wurde angelegt (Id: {created?.Id}).";
+                return;
+            }
+
+            var body = await resp.Content.ReadAsStringAsync();
+            switch ((int)resp.StatusCode)
+            {
+                case 400:
+                    errorMessage = "Validierungsfehler: " + body;
+                    break;
+                case 409:
+                    errorMessage = "Konflikt: Film existiert bereits!";
+                    break;
+                case 422:
+                    errorMessage = "Daten ungültig oder Constraint verletzt.";
+                    break;
+                default:
+                    errorMessage = $"Serverfehler ({(int)resp.StatusCode}): {body}";
+                    break;
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = "Netzwerk-/Clientfehler: " + ex.Message;
+        }
+    }
+}

@@ -1,0 +1,366 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v9.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v9.0": {
+      "WebApp/1.0.0": {
+        "dependencies": {
+          "Blazorise": "1.8.3",
+          "Blazorise.Bootstrap5": "1.8.3",
+          "Blazorise.Components": "1.8.3",
+          "Blazorise.Icons.FontAwesome": "1.8.3",
+          "Contracts": "1.0.0"
+        },
+        "runtime": {
+          "WebApp.dll": {}
+        }
+      },
+      "Blazorise/1.8.3": {
+        "dependencies": {
+          "Blazorise.Licensing": "1.3.0",
+          "Microsoft.AspNetCore.Components": "9.0.9",
+          "Microsoft.AspNetCore.Components.Web": "9.0.9",
+          "Microsoft.Extensions.Logging.Abstractions": "9.0.9"
+        },
+        "runtime": {
+          "lib/net9.0/Blazorise.dll": {
+            "assemblyVersion": "1.8.3.0",
+            "fileVersion": "1.8.3.0"
+          }
+        }
+      },
+      "Blazorise.Bootstrap5/1.8.3": {
+        "dependencies": {
+          "Blazorise": "1.8.3",
+          "Microsoft.AspNetCore.Components": "9.0.9",
+          "Microsoft.AspNetCore.Components.Web": "9.0.9",
+          "Microsoft.Extensions.Logging.Abstractions": "9.0.9"
+        },
+        "runtime": {
+          "lib/net9.0/Blazorise.Bootstrap5.dll": {
+            "assemblyVersion": "1.8.3.0",
+            "fileVersion": "1.8.3.0"
+          }
+        }
+      },
+      "Blazorise.Components/1.8.3": {
+        "dependencies": {
+          "Blazorise": "1.8.3",
+          "Blazorise.Snackbar": "1.8.3",
+          "Microsoft.AspNetCore.Components": "9.0.9",
+          "Microsoft.AspNetCore.Components.Web": "9.0.9",
+          "Microsoft.Extensions.Logging.Abstractions": "9.0.9"
+        },
+        "runtime": {
+          "lib/net9.0/Blazorise.Components.dll": {
+            "assemblyVersion": "1.8.3.0",
+            "fileVersion": "1.8.3.0"
+          }
+        }
+      },
+      "Blazorise.Icons.FontAwesome/1.8.3": {
+        "dependencies": {
+          "Blazorise": "1.8.3",
+          "Microsoft.AspNetCore.Components": "9.0.9",
+          "Microsoft.AspNetCore.Components.Web": "9.0.9",
+          "Microsoft.Extensions.Logging.Abstractions": "9.0.9"
+        },
+        "runtime": {
+          "lib/net9.0/Blazorise.Icons.FontAwesome.dll": {
+            "assemblyVersion": "1.8.3.0",
+            "fileVersion": "1.8.3.0"
+          }
+        }
+      },
+      "Blazorise.Licensing/1.3.0": {
+        "runtime": {
+          "lib/net9.0/Blazorise.Licensing.dll": {
+            "assemblyVersion": "1.3.0.0",
+            "fileVersion": "1.3.0.0"
+          }
+        }
+      },
+      "Blazorise.Snackbar/1.8.3": {
+        "dependencies": {
+          "Blazorise": "1.8.3",
+          "Microsoft.AspNetCore.Components": "9.0.9",
+          "Microsoft.AspNetCore.Components.Web": "9.0.9",
+          "Microsoft.Extensions.Logging.Abstractions": "9.0.9"
+        },
+        "runtime": {
+          "lib/net9.0/Blazorise.Snackbar.dll": {
+            "assemblyVersion": "1.8.3.0",
+            "fileVersion": "1.8.3.0"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.Authorization/9.0.9": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Metadata": "9.0.9",
+          "Microsoft.Extensions.Logging.Abstractions": "9.0.9",
+          "Microsoft.Extensions.Options": "9.0.9"
+        },
+        "runtime": {
+          "lib/net9.0/Microsoft.AspNetCore.Authorization.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.925.42003"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.Components/9.0.9": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Authorization": "9.0.9",
+          "Microsoft.AspNetCore.Components.Analyzers": "9.0.9"
+        },
+        "runtime": {
+          "lib/net9.0/Microsoft.AspNetCore.Components.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.925.42003"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.Components.Analyzers/9.0.9": {},
+      "Microsoft.AspNetCore.Components.Forms/9.0.9": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Components": "9.0.9"
+        },
+        "runtime": {
+          "lib/net9.0/Microsoft.AspNetCore.Components.Forms.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.925.42003"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.Components.Web/9.0.9": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Components": "9.0.9",
+          "Microsoft.AspNetCore.Components.Forms": "9.0.9",
+          "Microsoft.Extensions.DependencyInjection": "9.0.9",
+          "Microsoft.Extensions.Primitives": "9.0.9",
+          "Microsoft.JSInterop": "9.0.9"
+        },
+        "runtime": {
+          "lib/net9.0/Microsoft.AspNetCore.Components.Web.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.925.42003"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.Metadata/9.0.9": {
+        "runtime": {
+          "lib/net9.0/Microsoft.AspNetCore.Metadata.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.925.42003"
+          }
+        }
+      },
+      "Microsoft.Extensions.DependencyInjection/9.0.9": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.9"
+        },
+        "runtime": {
+          "lib/net9.0/Microsoft.Extensions.DependencyInjection.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.925.41916"
+          }
+        }
+      },
+      "Microsoft.Extensions.DependencyInjection.Abstractions/9.0.9": {
+        "runtime": {
+          "lib/net9.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.925.41916"
+          }
+        }
+      },
+      "Microsoft.Extensions.Logging.Abstractions/9.0.9": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.9"
+        },
+        "runtime": {
+          "lib/net9.0/Microsoft.Extensions.Logging.Abstractions.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.925.41916"
+          }
+        }
+      },
+      "Microsoft.Extensions.Options/9.0.9": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.9",
+          "Microsoft.Extensions.Primitives": "9.0.9"
+        },
+        "runtime": {
+          "lib/net9.0/Microsoft.Extensions.Options.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.925.41916"
+          }
+        }
+      },
+      "Microsoft.Extensions.Primitives/9.0.9": {
+        "runtime": {
+          "lib/net9.0/Microsoft.Extensions.Primitives.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.925.41916"
+          }
+        }
+      },
+      "Microsoft.JSInterop/9.0.9": {
+        "runtime": {
+          "lib/net9.0/Microsoft.JSInterop.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.925.42003"
+          }
+        }
+      },
+      "Contracts/1.0.0": {
+        "runtime": {
+          "Contracts.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "WebApp/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Blazorise/1.8.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-KlAxjVMxhwYwjn76+roOj5KllRrza6pzT/1K/p5NfFXQmNcnEbMzDT/E0rbhgvhQRIX/IL05BXEJVo5VQr2u3A==",
+      "path": "blazorise/1.8.3",
+      "hashPath": "blazorise.1.8.3.nupkg.sha512"
+    },
+    "Blazorise.Bootstrap5/1.8.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-dcZqOanIl3SqTUgq9K7VCGXX9s7ow9Oxg2nNsxZDDT7cdXMEihJYHpnM/4sTXRUFSinRmozQQS5PlXzieyfOjw==",
+      "path": "blazorise.bootstrap5/1.8.3",
+      "hashPath": "blazorise.bootstrap5.1.8.3.nupkg.sha512"
+    },
+    "Blazorise.Components/1.8.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-IoHjm2DbaoURw6GuYHeGzDryqoUt3qsXJiw7Il2/jh9y8cqH0O7B2U20Zuu1oYLp+G2jq6Z3DbqorE6TZEF7uQ==",
+      "path": "blazorise.components/1.8.3",
+      "hashPath": "blazorise.components.1.8.3.nupkg.sha512"
+    },
+    "Blazorise.Icons.FontAwesome/1.8.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-eijUxWbuxJ/ra3UzqLgxfqV59uVu1BF2tdNuivG6lnemeX8M8SU1JYXEEr3Cy2YDGrfiO6Bvhm8sdiehddrF7w==",
+      "path": "blazorise.icons.fontawesome/1.8.3",
+      "hashPath": "blazorise.icons.fontawesome.1.8.3.nupkg.sha512"
+    },
+    "Blazorise.Licensing/1.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-NvQlbUgd6jY/ZfkJPlhHLaMVyvfp24OMehFV8Y6mrqLHqC0CfcoE+6+YP9FZMZKNAWmcNZ85WXmYFWVl0UXGfw==",
+      "path": "blazorise.licensing/1.3.0",
+      "hashPath": "blazorise.licensing.1.3.0.nupkg.sha512"
+    },
+    "Blazorise.Snackbar/1.8.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-3ySj1RQqwdQBkuuXTYe1QeTLBQ7R5k2zSmKcRoL/oGFFpveNEzBOQ6BB1iZHRhiTgePGGwwiKLjjN3ALSVOowA==",
+      "path": "blazorise.snackbar/1.8.3",
+      "hashPath": "blazorise.snackbar.1.8.3.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Authorization/9.0.9": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-OVUDsnJDBhCuyJtjkQXObWbBGjh4kyxL/pl/5RqtZHnSJcpEr1eD6l4vbFIdRHg4bFI59vTTrfHKQ3zwfR4KCw==",
+      "path": "microsoft.aspnetcore.authorization/9.0.9",
+      "hashPath": "microsoft.aspnetcore.authorization.9.0.9.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Components/9.0.9": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-n8hjxdgIAWTtYOu1bitWwi8HYR7OT78syKpNSzJ8jSvzv5xnJFMf7BaZCorNx+Y76CINKrG9TBNY6ovBSnNahQ==",
+      "path": "microsoft.aspnetcore.components/9.0.9",
+      "hashPath": "microsoft.aspnetcore.components.9.0.9.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Components.Analyzers/9.0.9": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-jmT0+VkIoSq3VNshj8XX44aV/oQtA82xYa7ScqmAa7I2avXgMiQZzGEbd5dmn2PjKqYvI9MlK+gLyja1TYPzzQ==",
+      "path": "microsoft.aspnetcore.components.analyzers/9.0.9",
+      "hashPath": "microsoft.aspnetcore.components.analyzers.9.0.9.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Components.Forms/9.0.9": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-peotiQv5UfocSWtP837SFvKwQ+fwJhUItY0Uo7YgeYUbajHmfTfiFaOBUfsP1uF3RkVyzAK7IGR38PuIZ0JB6g==",
+      "path": "microsoft.aspnetcore.components.forms/9.0.9",
+      "hashPath": "microsoft.aspnetcore.components.forms.9.0.9.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Components.Web/9.0.9": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-wBAFkkBtZAZ856SvqS3NTzRHqgvlcAu7gwsw74e2c0Y7Rc6/VLmO/RJNGiYMjYaex3M+sFR7zETtxiXHneXJCw==",
+      "path": "microsoft.aspnetcore.components.web/9.0.9",
+      "hashPath": "microsoft.aspnetcore.components.web.9.0.9.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Metadata/9.0.9": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-AiIVl/wZOk5TeJjQrLltG6BdZ5wNywqB+48tGxZpNL151YKuc+5/e/h1q9lthNdFGnWPHOclA3o06WfFrCGa7A==",
+      "path": "microsoft.aspnetcore.metadata/9.0.9",
+      "hashPath": "microsoft.aspnetcore.metadata.9.0.9.nupkg.sha512"
+    },
+    "Microsoft.Extensions.DependencyInjection/9.0.9": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-zQV2WOSP+3z1EuK91ULxfGgo2Y75bTRnmJHp08+w/YXAyekZutX/qCd88/HOMNh35MDW9mJJJxPpMPS+1Rww8A==",
+      "path": "microsoft.extensions.dependencyinjection/9.0.9",
+      "hashPath": "microsoft.extensions.dependencyinjection.9.0.9.nupkg.sha512"
+    },
+    "Microsoft.Extensions.DependencyInjection.Abstractions/9.0.9": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/hymojfWbE9AlDOa0mczR44m00Jj+T3+HZO0ZnVTI032fVycI0ZbNOVFP6kqZMcXiLSYXzR2ilcwaRi6dzeGyA==",
+      "path": "microsoft.extensions.dependencyinjection.abstractions/9.0.9",
+      "hashPath": "microsoft.extensions.dependencyinjection.abstractions.9.0.9.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Logging.Abstractions/9.0.9": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-FEgpSF+Z9StMvrsSViaybOBwR0f0ZZxDm8xV5cSOFiXN/t+ys+rwAlTd/6yG7Ld1gfppgvLcMasZry3GsI9lGA==",
+      "path": "microsoft.extensions.logging.abstractions/9.0.9",
+      "hashPath": "microsoft.extensions.logging.abstractions.9.0.9.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Options/9.0.9": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-loxGGHE1FC2AefwPHzrjPq7X92LQm64qnU/whKfo6oWaceewPUVYQJBJs3S3E2qlWwnCpeZ+dGCPTX+5dgVAuQ==",
+      "path": "microsoft.extensions.options/9.0.9",
+      "hashPath": "microsoft.extensions.options.9.0.9.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Primitives/9.0.9": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-z4pyMePOrl733ltTowbN565PxBw1oAr8IHmIXNDiDqd22nFpYltX9KhrNC/qBWAG1/Zx5MHX+cOYhWJQYCO/iw==",
+      "path": "microsoft.extensions.primitives/9.0.9",
+      "hashPath": "microsoft.extensions.primitives.9.0.9.nupkg.sha512"
+    },
+    "Microsoft.JSInterop/9.0.9": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Babc8chP50+TS4glykMYs8jDeJyqeZZLp+qFfRF1S7FReS+k2q8ufjONV/m+Pr1STA7TvAC7b/Gx0UXyjRjWHg==",
+      "path": "microsoft.jsinterop/9.0.9",
+      "hashPath": "microsoft.jsinterop.9.0.9.nupkg.sha512"
+    },
+    "Contracts/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

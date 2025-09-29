@@ -1,0 +1,35 @@
+﻿@inherits LayoutComponentBase
+@using WebApp.Components.Pages
+
+<div class="navbar-shell">
+    <Bar Class="main-navbar" Background="Background.White" Role="navigation">
+        <BarMenu>
+            <div class="navbar-row">
+
+                <div class="brand">
+                    <a href="/" class="brand-link">
+                        <h2 class="brand-title">Film Archiv</h2>
+                    </a>
+                </div>
+
+
+                <div class="center-group">
+                    <Search />
+
+                    <div class="vertical-separator" aria-hidden="true"></div>
+
+                    <a href="/movies/create" class="btn-solid">
+                        Film hinzufügen
+                    </a>
+                </div>
+
+
+                <div></div>
+            </div>
+        </BarMenu>
+    </Bar>
+</div>
+
+<main class="content px-3 py-3">
+    @Body
+</main>
