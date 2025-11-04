@@ -9,3 +9,4 @@ D:\MovieArchive\Contracts\obj\Debug\net9.0\Contracts.dll
 D:\MovieArchive\Contracts\obj\Debug\net9.0\refint\Contracts.dll
 D:\MovieArchive\Contracts\obj\Debug\net9.0\Contracts.pdb
 D:\MovieArchive\Contracts\obj\Debug\net9.0\ref\Contracts.dll
+D:\MovieArchive\Contracts\obj\Debug\net9.0\Contracts.sourcelink.json

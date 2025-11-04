@@ -156,3 +156,4 @@ D:\MovieArchive\Api\obj\Debug\net9.0\refint\Api.dll
 D:\MovieArchive\Api\obj\Debug\net9.0\Api.pdb
 D:\MovieArchive\Api\obj\Debug\net9.0\Api.genruntimeconfig.cache
 D:\MovieArchive\Api\obj\Debug\net9.0\ref\Api.dll
+D:\MovieArchive\Api\obj\Debug\net9.0\Api.sourcelink.json

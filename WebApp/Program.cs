@@ -19,7 +19,7 @@ builder.Services
 
 builder.Services.AddHttpClient("MoviesApi", client =>
 {
-    client.BaseAddress = new Uri("https://localhost:7105");
+    client.BaseAddress = new Uri("https://localhost:7221");
 });
 
 var app = builder.Build();
